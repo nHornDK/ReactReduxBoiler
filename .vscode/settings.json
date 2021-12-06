@@ -1,0 +1,11 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {},
+	"git.autofetch": "all",
+	"git.fetchOnPull": true,
+	"git.postCommitCommand": "sync",
+	"git.pruneOnFetch": true,
+	"files.trimTrailingWhitespace": true,
+	"files.eol": "\n"
+}

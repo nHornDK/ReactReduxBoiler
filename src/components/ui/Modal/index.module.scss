@@ -1,0 +1,59 @@
+@import '_globals.scss';
+
+.header {
+	border-radius: 5px;
+}
+.appRoot {
+	filter: blur(4px);
+}
+.modalPortal {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 100vh;
+	min-width: 100vw;
+	z-index: 1000;
+}
+.modalBackdrop {
+	z-index: -1;
+	min-height: 100vh;
+	min-width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #333;
+	opacity: 0.7;
+}
+.modalContainer {
+	display: flex;
+	flex: 1 1;
+	place-self: center;
+	flex-flow: column nowrap;
+	margin: 0 auto;
+	max-width: 80vw;
+	max-height: 80vh;
+	border-radius: $cornerRadius;
+	background-color: #fff;
+	color: #333;
+}
+.modalHeader {
+	border-top-left-radius: $cornerRadius;
+	border-top-right-radius: $cornerRadius;
+	background-color: #ccc;
+	padding: 10px;
+}
+.modalContent {
+	background-color: #fff;
+	flex-grow: 1;
+	padding: 10px;
+}
+.modalFooter {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	border-bottom-left-radius: $cornerRadius;
+	border-bottom-right-radius: $cornerRadius;
+	background-color: #ccc;
+	padding: 10px;
+}

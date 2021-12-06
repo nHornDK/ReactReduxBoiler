@@ -1,0 +1,46 @@
+@import '_globals.scss';
+
+.button {
+	border-radius: $cornerRadius;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+	font-weight: bold;
+	outline: 0px;
+	border: 0px;
+	min-width: 64px;
+	padding: 6px 16px;
+	color: #fff;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	font-size: 0.875rem;
+	line-height: 1.75;
+	letter-spacing: 0.02857em;
+	text-transform: uppercase;
+	margin: 0 8px;
+	cursor: pointer;
+}
+.buttonDefaultVariant {
+	background-color: $color_default;
+
+	color: #333;
+	&:hover {
+		background-color: darken($color_default, 10%);
+	}
+}
+.buttonPrimaryVariant {
+	background-color: $color_primary;
+	&:hover {
+		background-color: darken($color_primary, 10%);
+	}
+}
+.buttonErrorVariant {
+	background-color: $color_error;
+	&:hover {
+		background-color: darken($color_error, 10%);
+	}
+}
+.buttonWarningVariant {
+	background-color: $color_warning;
+	&:hover {
+		background-color: darken($color_warning, 10%);
+	}
+}

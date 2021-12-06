@@ -1,0 +1,33 @@
+module.exports = {
+	parser: 'babel-ts',
+	trailingComma: 'es5',
+	semi: true,
+	tabWidth: 2,
+	printWidth: 240,
+	singleQuote: true,
+	jsxSingleQuote: true,
+	bracketSpacing: true,
+	endOfLine: 'lf',
+	arrowParens: 'always',
+	htmlWhitespaceSensitivity: 'css',
+	insertPragma: false,
+	proseWrap: 'preserve',
+	quoteProps: 'as-needed',
+	requirePragma: false,
+	embeddedLanguageFormatting: 'auto',
+	useTabs: true,
+	importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]'],
+	importOrderSeparation: true,
+	// importOrderParserPlugins: ['classProperties', 'decorators-legacy'],
+	// experimentalBabelParserPluginsList: ['classProperties', 'jsx', 'typescript'],
+	overrides: [
+		{
+			files: ['.prettierrc', '.eslintrc', '.stylelintrc'],
+			options: { parser: 'json' },
+		},
+		{
+			files: ['**/*.scss'],
+			options: { parser: 'scss' },
+		},
+	],
+};
