@@ -37,6 +37,8 @@ const TodoReducer = (state: TodoState = defaultState, action: TodoActions): Todo
 				...state,
 				byId,
 			};
+
+		case ActionType.TODO_UPDATE_SUCCESS:
 		case ActionType.TODO_CREATE_SUCCESS:
 			const {
 				payload: { data },

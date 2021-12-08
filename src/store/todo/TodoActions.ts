@@ -81,12 +81,12 @@ export default class TodoDispatchers {
 		};
 
 	public todoNoteUpdate =
-		(item: Partial<TodoDocument>): AppThunk<Promise<TodoUpdateAction | TodoFailedAction>> =>
+		(id: string, item: Partial<TodoDocument>): AppThunk<Promise<TodoUpdateAction | TodoFailedAction>> =>
 		async (dispatch, getState): Promise<TodoUpdateAction | TodoFailedAction> => {
 			try {
 				const { authenticate } = getState();
 				if (authenticate && authenticate.token) {
-					const response = await this.documentService.updateDocument<Partial<TodoDocument>, TodoDocument>('TodoItems', item, authenticate.token);
+					const response = await this.documentService.updateDocument<Partial<TodoDocument>, TodoDocument>('TodoItems', id, item, authenticate.token);
 					return dispatch({
 						type: ActionType.TODO_UPDATE_SUCCESS,
 						payload: {

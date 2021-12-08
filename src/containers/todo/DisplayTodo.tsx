@@ -13,7 +13,7 @@ interface DisplayTodoContainerProps {
 }
 type ConnectedDisplayTodoContainerProps = DisplayTodoContainerProps & ConnectedProps<typeof connector>;
 
-class DisplayTodoContainer extends React.Component<ConnectedDisplayTodoContainerProps> {
+class DisplayTodoContainer extends React.PureComponent<ConnectedDisplayTodoContainerProps> {
 	render(): JSX.Element {
 		const { todoId, todoItem, onClickEdit, onClickDelete } = this.props;
 		return (
