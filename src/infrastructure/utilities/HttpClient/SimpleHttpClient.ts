@@ -47,5 +47,12 @@ class SimpleHttpClient implements HttpClient {
 		});
 		return response.json();
 	};
+
+	delete = async (url: string, requestOptions?: Partial<RequestInit>): Promise<void> => {
+		await fetch(url, {
+			method: 'DELETE',
+			...requestOptions,
+		});
+	};
 }
 export default SimpleHttpClient;

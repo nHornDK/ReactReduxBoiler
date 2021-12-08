@@ -1,5 +1,4 @@
 import Container from '@fluffy-spoon/inverse';
-import { Action } from 'redux';
 
 import { GoogleFirestoreDocumentService } from '../../infrastructure/services';
 import { TodoDocument } from '../../models/firestore';

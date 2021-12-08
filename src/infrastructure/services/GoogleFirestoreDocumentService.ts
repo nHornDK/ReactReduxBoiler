@@ -1,11 +1,7 @@
 import Container, { Injectable } from '@fluffy-spoon/inverse';
 import { HttpClient, SimpleHttpClient } from '../utilities';
-// import {GevirNoteDocument} from '../../models/firestore/GevirNoteDocument'
 import { FirestoreDocuments } from '../../models/firestore/FirestoreDocument';
-// import { GoogleAuthenticationService } from '.';
 import OpenIdToken from '../../models/openId/OpenIdToken';
-
-// const firststoreGevirNotesUri = 'https://firestore.googleapis.com/v1/projects/gevirrclone/databases/(default)/documents/GevirNotes/';
 
 const { REACT_APP_FIRESTORE_DOCUMENTS_API_URL: documentsUrl } = process.env;
 
@@ -26,6 +22,16 @@ class GoogleFirestoreDocumentService {
 	createDocument = async <TDocumentFields, TDocument>(collectionId: string, document: TDocumentFields, openIdToken: OpenIdToken): Promise<TDocument> => {
 		const { access_token: accessToken } = openIdToken;
 		return this.httpClient.post<TDocumentFields, TDocument>(`${documentsUrl}${collectionId}?access_token=${accessToken}`, document);
+	};
+
+	updateDocument = async <TDocumentFields, TDocument>(collectionId: string, document: TDocumentFields, openIdToken: OpenIdToken): Promise<TDocument> => {
+		const { access_token: accessToken } = openIdToken;
+		return this.httpClient.patch<TDocumentFields, TDocument>(`${documentsUrl}´${collectionId}?access_token=${accessToken}`, document);
+	};
+
+	deleteDocument = async (collectionId: string, documentId: string, openIdToken: OpenIdToken): Promise<void> => {
+		const { access_token: accessToken } = openIdToken;
+		return this.httpClient.delete(`${documentsUrl}´${collectionId}/${documentId}?access_token=${accessToken}`);
 	};
 }
 export default GoogleFirestoreDocumentService;
