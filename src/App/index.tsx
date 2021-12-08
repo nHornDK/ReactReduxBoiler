@@ -7,6 +7,7 @@ import HomePage from '../pages/Home';
 import TodoPage from '../pages/Todo';
 import store from '../store';
 import './index.scss';
+import 'animate.css';
 
 const App: React.FunctionComponent = () => (
 	<Provider store={store}>

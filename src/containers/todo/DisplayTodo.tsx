@@ -20,24 +20,26 @@ class DisplayTodoContainer extends React.PureComponent<ConnectedDisplayTodoConta
 			return <div>Todo not found</div>;
 		}
 		return (
-			<RoundedBox>
-				<div className={styles.displayTodoHeader}>
-					<span className={styles.displayTodoTitle}>{todoItem.title}</span>
-					{onClickEdit && (
-						<IconButton onClick={(): void => onClickEdit(todoId)}>
-							<EditIcon className={styles.editIcon} />
-						</IconButton>
-					)}
-					{onClickDelete && (
-						<IconButton onClick={(): void => onClickDelete(todoId)}>
-							<DeleteIcon className={styles.deleteIcon} />
-						</IconButton>
-					)}
-				</div>
-				<div className={styles.displayTodoContent} style={{ whiteSpace: 'pre-wrap' }}>
-					{todoItem.note}
-				</div>
-			</RoundedBox>
+			<div className='animate__animated animate__rubberBand'>
+				<RoundedBox>
+					<div className={styles.displayTodoHeader}>
+						<span className={styles.displayTodoTitle}>{todoItem.title}</span>
+						{onClickEdit && (
+							<IconButton onClick={(): void => onClickEdit(todoId)}>
+								<EditIcon className={styles.editIcon} />
+							</IconButton>
+						)}
+						{onClickDelete && (
+							<IconButton onClick={(): void => onClickDelete(todoId)}>
+								<DeleteIcon className={styles.deleteIcon} />
+							</IconButton>
+						)}
+					</div>
+					<div className={styles.displayTodoContent} style={{ whiteSpace: 'pre-wrap' }}>
+						{todoItem.note}
+					</div>
+				</RoundedBox>
+			</div>
 		);
 	}
 }
