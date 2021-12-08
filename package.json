@@ -12,6 +12,7 @@
 		"@types/node": "^12.20.37",
 		"@types/react": "^17.0.37",
 		"@types/react-dom": "^17.0.11",
+		"animate.css": "^4.1.1",
 		"history": "^5.1.0",
 		"lodash": "^4.17.21",
 		"react": "^17.0.2",
