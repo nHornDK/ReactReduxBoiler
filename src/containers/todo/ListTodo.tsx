@@ -30,7 +30,7 @@ class ListTodoContainer extends React.Component<ConnectedListTodoContainerProps>
 
 const connector = connect(
 	({ todo }: RootState) => ({
-		allIds: Object.keys(todo.byId),
+		allIds: todo.allIds,
 	}),
 	actions
 );
