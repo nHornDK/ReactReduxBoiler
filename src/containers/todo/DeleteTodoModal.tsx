@@ -11,7 +11,7 @@ interface DeleteTodoModalContainerProps {
 }
 type ConnectedDeleteTodoModalContainerProps = DeleteTodoModalContainerProps & ConnectedProps<typeof connector>;
 
-class DeleteTodoModalContainer extends React.Component<ConnectedDeleteTodoModalContainerProps> {
+class DeleteTodoModalContainer extends React.PureComponent<ConnectedDeleteTodoModalContainerProps> {
 	handleClickDelete = async (): Promise<void> => {
 		const { onDeleted, todoNoteDelete, todoId } = this.props;
 		await todoNoteDelete(todoId);

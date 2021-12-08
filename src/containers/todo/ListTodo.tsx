@@ -10,7 +10,7 @@ interface ListTodoContainerProps {
 }
 type ConnectedListTodoContainerProps = ListTodoContainerProps & ConnectedProps<typeof connector>;
 
-class ListTodoContainer extends React.Component<ConnectedListTodoContainerProps> {
+class ListTodoContainer extends React.PureComponent<ConnectedListTodoContainerProps> {
 	async componentDidMount(): Promise<void> {
 		const { todoNotes: todoNotesAsync } = this.props;
 		await todoNotesAsync();

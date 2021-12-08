@@ -14,7 +14,7 @@ interface CreateTodoModalContainerState {
 	title: string;
 	note: string;
 }
-class CreateTodoModalContainer extends React.Component<ConnectedCreateTodoModalContainerProps, CreateTodoModalContainerState> {
+class CreateTodoModalContainer extends React.PureComponent<ConnectedCreateTodoModalContainerProps, CreateTodoModalContainerState> {
 	constructor(props: ConnectedCreateTodoModalContainerProps) {
 		super(props);
 		this.state = {

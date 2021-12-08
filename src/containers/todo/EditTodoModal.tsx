@@ -16,7 +16,7 @@ interface EditTodoModalContainerState {
 	title: string;
 	note: string;
 }
-class EditTodoModalContainer extends React.Component<ConnectedEditTodoModalContainerProps, EditTodoModalContainerState> {
+class EditTodoModalContainer extends React.PureComponent<ConnectedEditTodoModalContainerProps, EditTodoModalContainerState> {
 	constructor(props: ConnectedEditTodoModalContainerProps) {
 		super(props);
 		const {
