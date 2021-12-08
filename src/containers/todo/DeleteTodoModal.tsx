@@ -36,6 +36,7 @@ class DeleteTodoModalContainer extends React.Component<ConnectedDeleteTodoModalC
 
 	render(): JSX.Element {
 		const { todoId } = this.props;
+		console.log({ todoId });
 		return (
 			<Modal header={<h1>Delete todo item?</h1>} footer={this.renderModalFooter()}>
 				<DisplayTodo todoId={todoId} />

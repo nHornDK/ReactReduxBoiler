@@ -18,6 +18,7 @@ class ListTodoContainer extends React.Component<ConnectedListTodoContainerProps>
 
 	render(): JSX.Element {
 		const { allIds, onClickEdit, onClickDelete } = this.props;
+		console.log({ allIds });
 		return (
 			<div>
 				{allIds?.map((todoId) => (

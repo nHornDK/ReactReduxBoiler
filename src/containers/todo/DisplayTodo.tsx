@@ -13,9 +13,12 @@ interface DisplayTodoContainerProps {
 }
 type ConnectedDisplayTodoContainerProps = DisplayTodoContainerProps & ConnectedProps<typeof connector>;
 
-class DisplayTodoContainer extends React.PureComponent<ConnectedDisplayTodoContainerProps> {
+class DisplayTodoContainer extends React.Component<ConnectedDisplayTodoContainerProps> {
 	render(): JSX.Element {
 		const { todoId, todoItem, onClickEdit, onClickDelete } = this.props;
+		if (!todoItem) {
+			return <div>Todo not found</div>;
+		}
 		return (
 			<RoundedBox>
 				<div className={styles.displayTodoHeader}>
