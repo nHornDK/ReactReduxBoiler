@@ -5,6 +5,7 @@ import TodoState, { TodoItem } from './TodoState';
 
 export const defaultState: TodoState = {
 	byId: {},
+	allIds: [],
 };
 
 const getTodoModel = ({ name, fields }: TodoDocument): TodoItem => {
@@ -36,6 +37,7 @@ const TodoReducer = (state: TodoState = defaultState, action: TodoActions): Todo
 			return {
 				...state,
 				byId,
+				allIds: [...Object.keys(byId)],
 			};
 
 		case ActionType.TODO_UPDATE_SUCCESS:
@@ -44,12 +46,35 @@ const TodoReducer = (state: TodoState = defaultState, action: TodoActions): Todo
 				payload: { data },
 			} = action;
 			const item = getTodoModel(data);
-			return {
+			const newstate = {
 				...state,
 				byId: {
 					...state.byId,
 					[item.id]: item,
 				},
+			};
+			return {
+				...newstate,
+				allIds: [...Object.keys(newstate.byId)],
+			};
+		case ActionType.TODO_DELETE_SUCCESS:
+			const {
+				payload: { data: id },
+			} = action;
+
+			let byIdentifier = {};
+			Object.keys(state.byId).forEach((idKey) => {
+				if (idKey !== id)
+					byIdentifier = {
+						...byIdentifier,
+						[idKey]: state.byId[idKey],
+					};
+			});
+
+			return {
+				...state,
+				byId: { ...byIdentifier },
+				allIds: [...Object.keys(byIdentifier)],
 			};
 		default:
 			return state;

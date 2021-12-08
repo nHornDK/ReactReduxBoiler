@@ -13,7 +13,8 @@ type ConnectedDeleteTodoModalContainerProps = DeleteTodoModalContainerProps & Co
 
 class DeleteTodoModalContainer extends React.Component<ConnectedDeleteTodoModalContainerProps> {
 	handleClickDelete = async (): Promise<void> => {
-		const { onDeleted } = this.props;
+		const { onDeleted, todoNoteDelete, todoId } = this.props;
+		await todoNoteDelete(todoId);
 		if (onDeleted) onDeleted();
 	};
 

@@ -20,6 +20,13 @@ export default class TodoDispatchers {
 		this.documentService = container.resolveInstance(GoogleFirestoreDocumentService);
 	}
 
+	private todoFailed = (data: string): TodoFailedAction => ({
+		type: ActionType.TODO_FAILED,
+		payload: {
+			data,
+		},
+	});
+
 	public todoNotes =
 		(): AppThunk<Promise<TodoListAction | TodoFailedAction>> =>
 		async (dispatch, getState): Promise<TodoListAction | TodoFailedAction> => {
@@ -35,19 +42,9 @@ export default class TodoDispatchers {
 					});
 				}
 			} catch (error: unknown) {
-				return dispatch({
-					type: ActionType.TODO_FAILED,
-					payload: {
-						data: error,
-					},
-				});
+				return dispatch(this.todoFailed(JSON.stringify(error)));
 			}
-			return dispatch({
-				type: ActionType.TODO_FAILED,
-				payload: {
-					data: '',
-				},
-			});
+			return dispatch(this.todoFailed('yeet'));
 		};
 
 	public todoNoteCreate =
@@ -65,19 +62,9 @@ export default class TodoDispatchers {
 					});
 				}
 			} catch (error: unknown) {
-				return dispatch({
-					type: ActionType.TODO_FAILED,
-					payload: {
-						data: error,
-					},
-				});
+				return dispatch(this.todoFailed(JSON.stringify(error)));
 			}
-			return dispatch({
-				type: ActionType.TODO_FAILED,
-				payload: {
-					data: '',
-				},
-			});
+			return dispatch(this.todoFailed('yeet'));
 		};
 
 	public todoNoteUpdate =
@@ -95,22 +82,26 @@ export default class TodoDispatchers {
 					});
 				}
 			} catch (error: unknown) {
-				return dispatch({
-					type: ActionType.TODO_FAILED,
-					payload: {
-						data: error,
-					},
-				});
+				return dispatch(this.todoFailed(JSON.stringify(error)));
 			}
-			return dispatch({
-				type: ActionType.TODO_FAILED,
-				payload: {
-					data: 'YEET',
-				},
-			});
+			return dispatch(this.todoFailed('yeet'));
 		};
 
-	// public todoNoteDelete = () => {
-
-	// }
+	public todoNoteDelete =
+		(id: string): AppThunk<Promise<TodoDeleteAction | TodoFailedAction>> =>
+		async (dispatch, getState): Promise<TodoDeleteAction | TodoFailedAction> => {
+			try {
+				const { authenticate } = getState();
+				if (authenticate && authenticate.token) {
+					await this.documentService.deleteDocument('TodoItems', id, authenticate.token);
+					return dispatch({
+						type: ActionType.TODO_DELETE_SUCCESS,
+						payload: { data: id },
+					});
+				}
+			} catch (error: unknown) {
+				return dispatch(this.todoFailed(JSON.stringify(error)));
+			}
+			return dispatch(this.todoFailed('yeet'));
+		};
 }
