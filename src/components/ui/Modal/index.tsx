@@ -21,7 +21,7 @@ export default class Modal extends React.Component<ModalProps> {
 		return (
 			<ModalPortal>
 				<ModalBackdrop />
-				<div className={styles.modalContainer}>
+				<div className={`${styles.modalContainer} animate__animated animate__tada`}>
 					<ModalHeader>{header}</ModalHeader>
 					<ModalContent>{children}</ModalContent>
 					<ModalFooter>{footer}</ModalFooter>
