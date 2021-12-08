@@ -20,9 +20,7 @@ class AuthPage extends React.Component<AuthProps> {
 		const { authenticate: authenticateAsync } = this.props;
 		const urlParams = new URLSearchParams(search);
 		const code = urlParams.get('code');
-		console.log('handleAuthCallback', { props: this.props, code });
 		if (code) {
-			console.log('get token', { props: this.props, code });
 			await authenticateAsync(code);
 			window.location.href = '/todo';
 		}
