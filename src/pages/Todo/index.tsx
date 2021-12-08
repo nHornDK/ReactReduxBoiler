@@ -13,8 +13,8 @@ export default class TodoPage extends React.Component {
 				<TodoListView />
 				<Routes>
 					<Route path='create' element={<TodoCreateView />} />
-					<Route path='edit/:id' element={<TodoEditView />} />
-					<Route path='delete/:id' element={<TodoDeleteView />} />
+					<Route path='edit/:todoId' element={<TodoEditView />} />
+					<Route path='delete/:todoId' element={<TodoDeleteView />} />
 				</Routes>
 			</>
 		);

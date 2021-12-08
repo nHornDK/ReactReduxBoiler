@@ -4,8 +4,10 @@ import styles from './index.module.scss';
 
 export type ButtonVariant = 'default' | 'primary' | 'warning' | 'error';
 export interface ButtonProps {
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	variant?: ButtonVariant;
 	children: React.ReactNode;
+	style?: React.CSSProperties;
 }
 const getVariantStyles = (variant: ButtonVariant): string => {
 	switch (variant) {
@@ -20,8 +22,8 @@ const getVariantStyles = (variant: ButtonVariant): string => {
 			return styles.buttonDefaultVariant;
 	}
 };
-const Button: React.FC<ButtonProps> = ({ children, variant = 'default' }) => (
-	<button type='button' className={`${styles.button} ${getVariantStyles(variant)}`}>
+const Button: React.FC<ButtonProps> = ({ children, variant = 'default', onClick, style }) => (
+	<button type='button' className={`${styles.button} ${getVariantStyles(variant)}`} onClick={onClick} style={style}>
 		{children}
 	</button>
 );

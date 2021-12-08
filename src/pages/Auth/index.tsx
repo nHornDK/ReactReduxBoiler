@@ -44,7 +44,7 @@ class AuthPage extends React.Component<AuthProps, AuthState> {
 		const {
 			location: { search },
 		} = window;
-		const { authenticateAsync } = this.props;
+		const { authenticate: authenticateAsync } = this.props;
 		const urlParams = new URLSearchParams(search);
 		const code = urlParams.get('code');
 		console.log('handleAuthCallback', { props: this.props, code });

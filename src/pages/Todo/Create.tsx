@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default class TodoCreateView extends React.Component {
-	render(): JSX.Element {
-		return (
-			<div style={{ color: '#333' }}>
-				<h1>TodoCreateView</h1>
-			</div>
-		);
-	}
-}
+import { CreateTodoModal } from '../../containers/todo';
+
+const TodoCreateView: React.FC = () => {
+	const navigate = useNavigate();
+	return <CreateTodoModal onCreated={(): void => navigate('/todo', { replace: true })} onCancel={(): void => navigate('/todo', { replace: true })} />;
+};
+
+export default TodoCreateView;

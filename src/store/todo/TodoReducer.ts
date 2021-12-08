@@ -1,42 +1,54 @@
-import { ActionTypeEnum } from '../StoreTypes';
-import { TodoActions, TodoAction, TodoCreateAction } from './TodoActions';
-import TodoState from './TodoState';
+import { TodoDocument } from '../../models/firestore';
+import { ActionType } from '../StoreTypes';
+import { TodoActions } from './TodoActions';
+import TodoState, { TodoItem } from './TodoState';
 
 export const defaultState: TodoState = {
-	items: [],
+	byId: {},
+};
+
+const getTodoModel = ({ name, fields }: TodoDocument): TodoItem => {
+	const id = name.substr(name.lastIndexOf('/') + 1, name.length - name.lastIndexOf('/'));
+	return {
+		id,
+		name,
+		title: fields.title.stringValue,
+		note: fields.note.stringValue,
+	};
 };
 
 const TodoReducer = (state: TodoState = defaultState, action: TodoActions): TodoState => {
-	console.log(action);
 	switch (action.type) {
-		case ActionTypeEnum.TODO_LIST_SUCCESS:
-			console.log({ action, state });
-			return (({ payload: { data } }: TodoAction): TodoState => ({
+		case ActionType.TODO_LIST_SUCCESS:
+			const {
+				payload: {
+					data: { documents },
+				},
+			} = action;
+			let { byId } = state;
+			documents.forEach((doc) => {
+				const item = getTodoModel(doc);
+				byId = {
+					...byId,
+					[item.id]: item,
+				};
+			});
+			return {
 				...state,
-				items: [
-					...data.documents.map((doc) => {
-						console.log('map', { doc });
-						return {
-							name: doc.name,
-							title: doc.fields.title.stringValue,
-							note: doc.fields.note.stringValue,
-						};
-					}),
-				],
-			}))(action as TodoAction);
-		case ActionTypeEnum.TODO_CREATE_SUCCESS:
-			console.log({ action, state });
-			return (({ payload: { data } }: TodoCreateAction): TodoState => ({
+				byId,
+			};
+		case ActionType.TODO_CREATE_SUCCESS:
+			const {
+				payload: { data },
+			} = action;
+			const item = getTodoModel(data);
+			return {
 				...state,
-				items: [
-					...state.items,
-					{
-						name: data.name,
-						title: data.fields.title.stringValue,
-						note: data.fields.note.stringValue,
-					},
-				],
-			}))(action as TodoCreateAction);
+				byId: {
+					...state.byId,
+					[item.id]: item,
+				},
+			};
 		default:
 			return state;
 	}

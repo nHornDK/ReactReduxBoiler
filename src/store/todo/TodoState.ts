@@ -1,9 +1,11 @@
-import { OpenIDToken } from '../../models/openId';
-
 export default interface TodoState {
-	items: TodoItem[];
+	byId: NormalizedData<TodoItem>;
 }
+export type NormalizedData<TValue> = {
+	[key: string]: TValue;
+};
 export interface TodoItem {
+	id: string;
 	name: string;
 	title: string;
 	note: string;

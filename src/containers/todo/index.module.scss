@@ -1,0 +1,29 @@
+@import '_colors.scss';
+.displayTodoHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #fff;
+}
+.displayTodoTitle {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 0px 10px;
+	flex-grow: 1;
+	color: #fff;
+}
+.displayTodoContent {
+	padding: 20px 10px;
+	color: #fff;
+}
+.editIcon {
+	fill: $color-info;
+}
+.deleteIcon {
+	fill: $color-error;
+}

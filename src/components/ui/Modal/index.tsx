@@ -4,6 +4,7 @@ import ModalPortal from './ModalPortal';
 import styles from './index.module.scss';
 
 export interface ModalProps {
+	show?: boolean;
 	header?: React.ReactNode;
 	children: React.ReactNode;
 	footer?: React.ReactNode;

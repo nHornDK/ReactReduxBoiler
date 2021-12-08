@@ -4,26 +4,28 @@
 	border-radius: 5px;
 }
 .appRoot {
-	filter: blur(4px);
+	transition: all 1.5 ease;
+	filter: blur(10px);
 }
 .modalPortal {
 	display: flex;
-	position: absolute;
+	position: fixed;
 	top: 0;
+	bottom: 0;
 	left: 0;
-	min-height: 100vh;
+	height: 100vh;
 	min-width: 100vw;
 	z-index: 1000;
 }
 .modalBackdrop {
 	z-index: -1;
-	min-height: 100vh;
+	height: 100vh;
 	min-width: 100vw;
 	position: absolute;
 	top: 0;
 	left: 0;
 	background-color: #333;
-	opacity: 0.7;
+	opacity: 0.5;
 }
 .modalContainer {
 	display: flex;
@@ -31,11 +33,14 @@
 	place-self: center;
 	flex-flow: column nowrap;
 	margin: 0 auto;
-	max-width: 80vw;
+	max-width: min(80vw, 800px);
 	max-height: 80vh;
+	height: max-content;
 	border-radius: $cornerRadius;
 	background-color: #fff;
 	color: #333;
+	flex-grow: 1;
+	flex-shrink: 1;
 }
 .modalHeader {
 	border-top-left-radius: $cornerRadius;
@@ -46,6 +51,8 @@
 .modalContent {
 	background-color: #fff;
 	flex-grow: 1;
+	flex-shrink: 1;
+	height: max-content;
 	padding: 10px;
 }
 .modalFooter {

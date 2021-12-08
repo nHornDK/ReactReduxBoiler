@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './RoundedBox.module.scss';
+import styles from './index.module.scss';
 
 export interface RoundedBoxProps {
 	children: React.ReactNode;

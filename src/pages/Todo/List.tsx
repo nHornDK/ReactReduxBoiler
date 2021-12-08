@@ -1,56 +1,22 @@
 import React from 'react';
-import { connect, ConnectedProps } from 'react-redux';
-import { RoundedBox } from '../../components/ui';
-import actions from '../../store/Actions';
-import RootState from '../../store/RootState';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/ui';
+import { ListTodo } from '../../containers/todo';
 
-type TodoListViewProps = ConnectedProps<typeof connector>;
+const TodoListView: React.FC = () => {
+	const navigate = useNavigate();
+	const handleClickCreate = (): void => navigate('/todo/create', { replace: true });
+	const handleClickEdit = (todoId: string): void => navigate(`/todo/edit/${todoId}`, { replace: true });
+	const handleClickDelete = (todoId: string): void => navigate(`/todo/delete/${todoId}`, { replace: true });
+	return (
+		<div style={{ width: '800px', margin: '0 auto' }}>
+			<h1>Todo Items</h1>
+			<ListTodo onClickEdit={handleClickEdit} onClickDelete={handleClickDelete} />
+			<Button variant='primary' onClick={handleClickCreate}>
+				Create
+			</Button>
+		</div>
+	);
+};
 
-class TodoListView extends React.Component<TodoListViewProps> {
-	async componentDidMount(): Promise<void> {
-		const { todoNotesAsync } = this.props;
-		await todoNotesAsync();
-	}
-
-	handleCreate = async (): Promise<void> => {
-		const { todoNoteCreateAsync } = this.props;
-		await todoNoteCreateAsync({
-			fields: {
-				title: { stringValue: 'a little title' },
-				note: { stringValue: 'a little note' },
-			},
-		});
-	};
-
-	render(): JSX.Element {
-		const { todoItems } = this.props;
-		console.log('render', todoItems);
-		return (
-			<div>
-				<h1>TodoListView</h1>
-				{todoItems?.map((item) => (
-					<RoundedBox key={item.name}>
-						<br />
-						<b>Title:</b>
-						{item.title}
-						<br />
-						<b>Note:</b>
-						{item.note}
-						<br />
-					</RoundedBox>
-				))}
-				<button type='button' onClick={this.handleCreate}>
-					create
-				</button>
-			</div>
-		);
-	}
-}
-
-const connector = connect(
-	({ todo }: RootState) => ({
-		todoItems: todo.items,
-	}),
-	actions
-);
-export default connector(TodoListView);
+export default TodoListView;

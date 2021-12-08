@@ -1,9 +1,9 @@
 @import '_globals';
 
 .roundedBox {
-	padding: 10px;
-	margin: 20px;
+	margin: 10px 0px 10px 0px;
 	border-radius: 10px;
 	border: 5px solid darken($color_app_background, 1%);
 	background-color: lighten($color_app_background, 10%);
+	text-align: left;
 }

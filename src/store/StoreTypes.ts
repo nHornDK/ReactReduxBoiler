@@ -3,20 +3,19 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import RootState from './RootState';
 
-export interface PayloadAction<TPayLoad> extends Action<ActionTypeEnum> {
+export interface PayloadAction<TPayLoad, TActionType = ActionType> extends Action<TActionType> {
 	payload: {
 		data: TPayLoad;
 	};
 }
-export type AppDispatch = ThunkDispatch<RootState, unknown, Action<ActionTypeEnum>>;
+export type AppDispatch = ThunkDispatch<RootState, unknown, Action<ActionType>>;
 
-export type AppThunk<TReturnType = void> = ThunkAction<TReturnType, RootState, unknown, Action<ActionTypeEnum>>;
+export type AppThunk<TReturnType = void> = ThunkAction<TReturnType, RootState, unknown, Action<ActionType>>;
 
-export enum ActionTypeEnum {
+export enum ActionType {
 	AUTHENTICATION_FAILED = 'AUTHENTICATION_FAILED',
 	AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS',
 	TODO_LIST_SUCCESS = 'TODO_LIST_SUCCESS',
-	TODO_LIST_FAILED = 'TODO_LIST_FAILED',
+	TODO_FAILED = 'TODO_FAILED',
 	TODO_CREATE_SUCCESS = 'TODO_CREATE_SUCCESS',
-	TODO_CREATE_FAILED = 'TODO_CREATE_FAILED',
 }

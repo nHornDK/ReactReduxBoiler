@@ -1,0 +1,23 @@
+@import '_globals';
+
+@mixin ripple-light($background-color) {
+	@include ripple($background-color, darken($background-color, 10%), lighten($background-color, 15%));
+}
+
+@mixin ripple-dark($background-color) {
+	@include ripple($background-color, darken($background-color, 10%), darken($background-color, 25%));
+}
+
+@mixin ripple($initial-background, $hover-background, $active-background) {
+	background: $initial-background;
+	background-position: center;
+	transition: background 0.8s ease;
+	&:hover {
+		background: $hover-background radial-gradient(circle, transparent 1%, $hover-background 1%) center/15000%;
+	}
+	&:active {
+		background-color: $active-background;
+		background-size: 100%;
+		transition: background 0s ease;
+	}
+}

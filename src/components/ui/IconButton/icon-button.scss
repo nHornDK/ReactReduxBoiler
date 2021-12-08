@@ -1,0 +1,10 @@
+@import '_globals.scss';
+@import '_mixins.scss';
+
+.icon-button {
+	border-radius: 50%;
+	padding: 12px;
+	border: none;
+	cursor: pointer;
+	@include ripple(transparent, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+}

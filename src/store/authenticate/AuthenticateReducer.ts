@@ -1,5 +1,5 @@
-import { ActionTypeEnum } from '../StoreTypes';
-import { AuthenticateActions, AuthenticateAction, AuthenticateFailedAction } from './AuthenticateActions';
+import { ActionType } from '../StoreTypes';
+import { AuthenticateActions } from './AuthenticateActions';
 import AuthenticateState from './AuthenticateState';
 
 export const defaultState: AuthenticateState = {
@@ -10,21 +10,27 @@ export const defaultState: AuthenticateState = {
 
 const AuthenticateReducer = (state: AuthenticateState = defaultState, action: AuthenticateActions): AuthenticateState => {
 	switch (action.type) {
-		case ActionTypeEnum.AUTHENTICATION_SUCCESS:
-			return (({ payload: { data } }: AuthenticateAction): AuthenticateState => ({
+		case ActionType.AUTHENTICATION_SUCCESS:
+			const {
+				payload: { data },
+			} = action;
+			return {
 				...state,
 				token: {
 					...state.token,
 					...data,
 				},
 				status: 'IDLE',
-			}))(action as AuthenticateAction);
-		case ActionTypeEnum.AUTHENTICATION_FAILED:
-			return (({ payload: { data } }: AuthenticateFailedAction): AuthenticateState => ({
+			};
+		case ActionType.AUTHENTICATION_FAILED:
+			const {
+				payload: { data: errorMessage },
+			} = action;
+			return {
 				...state,
-				errorMessage: data,
+				errorMessage,
 				status: 'FAILED',
-			}))(action as AuthenticateFailedAction);
+			};
 		default:
 			return state;
 	}
