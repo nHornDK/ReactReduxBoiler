@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Button, Modal } from '../../components/ui';
-import { Textfield } from '../../components/forms';
+import { Textfield, Textarea } from '../../components/forms';
 import actions from '../../store/Actions';
 
 interface CreateTodoModalContainerProps {
@@ -42,7 +42,7 @@ class CreateTodoModalContainer extends React.PureComponent<ConnectedCreateTodoMo
 
 	handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>): void => this.setState({ title: e.target.value });
 
-	handleChangeNote = (e: React.ChangeEvent<HTMLInputElement>): void => this.setState({ note: e.target.value });
+	handleChangeNote = (e: React.ChangeEvent<HTMLTextAreaElement>): void => this.setState({ note: e.target.value });
 
 	renderModalFooter = (): JSX.Element => (
 		<>
@@ -60,7 +60,7 @@ class CreateTodoModalContainer extends React.PureComponent<ConnectedCreateTodoMo
 		return (
 			<Modal header={<h1>Create todo item</h1>} footer={this.renderModalFooter()}>
 				<Textfield label='Title' value={title} onChange={this.handleChangeTitle} />
-				<Textfield label='Note' value={note} onChange={this.handleChangeNote} />
+				<Textarea label='Note' value={note} onChange={this.handleChangeNote} />
 			</Modal>
 		);
 	}

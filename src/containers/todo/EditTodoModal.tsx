@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Button, Modal } from '../../components/ui';
-import { Textfield } from '../../components/forms';
+import { Textarea, Textfield } from '../../components/forms';
 import actions from '../../store/Actions';
 import RootState from '../../store/RootState';
 
@@ -48,7 +48,7 @@ class EditTodoModalContainer extends React.PureComponent<ConnectedEditTodoModalC
 
 	handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>): void => this.setState({ title: e.target.value });
 
-	handleChangeNote = (e: React.ChangeEvent<HTMLInputElement>): void => this.setState({ note: e.target.value });
+	handleChangeNote = (e: React.ChangeEvent<HTMLTextAreaElement>): void => this.setState({ note: e.target.value });
 
 	renderModalFooter = (): JSX.Element => (
 		<>
@@ -66,7 +66,7 @@ class EditTodoModalContainer extends React.PureComponent<ConnectedEditTodoModalC
 		return (
 			<Modal header={<h1>Edit todo item</h1>} footer={this.renderModalFooter()}>
 				<Textfield label='Title' value={title} onChange={this.handleChangeTitle} />
-				<Textfield label='Note' value={note} onChange={this.handleChangeNote} />
+				<Textarea label='Note' value={note} onChange={this.handleChangeNote} />
 			</Modal>
 		);
 	}

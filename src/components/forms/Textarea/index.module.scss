@@ -1,0 +1,104 @@
+@import '_globals.scss';
+.textareaGroup {
+	position: relative;
+	margin-bottom: 45px;
+	margin-top: 20px;
+}
+.textarea {
+	font-size: 18px;
+	padding: 10px 10px 10px 10px;
+	display: block;
+	width: 600px;
+	height: 100px;
+	border: none;
+	border-bottom: 1px solid $color_default;
+	resize: none;
+}
+.textarea:focus {
+	outline: none;
+}
+
+/* LABEL ======================================= */
+.textareaLabel {
+	color: #999;
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: 0.2s ease all;
+}
+
+/* active state */
+.textarea:focus ~ .textareaLabel,
+.textarea:valid ~ .textareaLabel {
+	top: -20px;
+	font-size: 14px;
+	color: $color_primary;
+}
+
+/* BOTTOM BARS ================================= */
+.textareaBar {
+	position: relative;
+	display: block;
+	width: 620px;
+}
+.textareaBar:before,
+.textareaBar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: $color_primary;
+	transition: 0.2s ease all;
+}
+.textareaBar:before {
+	left: 50%;
+}
+.textareaBar:after {
+	right: 50%;
+}
+
+/* active state */
+.textarea:focus ~ .textareaBar:before,
+.textarea:focus ~ .textareaBar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.textareaHighlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+/* active state */
+.textarea:focus ~ .textareaHighlight {
+	animation: inputHighlighter 0.3s ease;
+	// background-color: $color_primary;
+	// width: 0;
+}
+@keyframes inputHighlighter {
+	from {
+		background: $color_primary;
+	}
+	to {
+		width: 0;
+		background: transparent;
+	}
+}
+// .textareaDefaultVariant {
+// 	// background-color: $color_default;
+// 	background-color: $color_primary;
+
+// 	color: #333;
+// 	&:hover {
+// 		background-color: darken($color_default, 10%);
+// 	}
+// }

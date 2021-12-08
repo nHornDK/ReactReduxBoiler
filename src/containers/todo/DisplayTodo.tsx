@@ -34,7 +34,9 @@ class DisplayTodoContainer extends React.PureComponent<ConnectedDisplayTodoConta
 						</IconButton>
 					)}
 				</div>
-				<div className={styles.displayTodoContent}>{todoItem.note}</div>
+				<div className={styles.displayTodoContent} style={{ whiteSpace: 'pre-wrap' }}>
+					{todoItem.note}
+				</div>
 			</RoundedBox>
 		);
 	}
