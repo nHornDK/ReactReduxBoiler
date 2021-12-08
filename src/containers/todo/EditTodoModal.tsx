@@ -30,6 +30,7 @@ class EditTodoModalContainer extends React.Component<ConnectedEditTodoModalConta
 	}
 
 	handleClickSave = async (): Promise<void> => {
+<<<<<<< HEAD
 		const { onSaved } = this.props;
 		// const { title, note } = this.state;
 		// await todoNoteEdit({
@@ -38,6 +39,16 @@ class EditTodoModalContainer extends React.Component<ConnectedEditTodoModalConta
 		// 		note: { stringValue: note },
 		// 	},
 		// });
+=======
+		const { onSaved, todoNoteUpdate, todoId } = this.props;
+		const { title, note } = this.state;
+		await todoNoteUpdate(todoId, {
+			fields: {
+				title: { stringValue: title },
+				note: { stringValue: note },
+			},
+		});
+>>>>>>> ff87c82a399dc4ad086b77110ab475d54ce00a6a
 		if (onSaved) onSaved();
 	};
 

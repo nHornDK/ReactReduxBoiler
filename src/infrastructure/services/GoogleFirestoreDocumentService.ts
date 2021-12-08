@@ -23,5 +23,15 @@ class GoogleFirestoreDocumentService {
 		const { access_token: accessToken } = openIdToken;
 		return this.httpClient.post<TDocumentFields, TDocument>(`${documentsUrl}${collectionId}?access_token=${accessToken}`, document);
 	};
+
+	updateDocument = async <TDocumentFields, TDocument>(collectionId: string, documentId: string, document: TDocumentFields, openIdToken: OpenIdToken): Promise<TDocument> => {
+		const { access_token: accessToken } = openIdToken;
+		return this.httpClient.patch<TDocumentFields, TDocument>(`${documentsUrl}´${collectionId}/${documentId}?access_token=${accessToken}`, document);
+	};
+
+	deleteDocument = async (collectionId: string, documentId: string, openIdToken: OpenIdToken): Promise<void> => {
+		const { access_token: accessToken } = openIdToken;
+		return this.httpClient.delete(`${documentsUrl}´${collectionId}/${documentId}?access_token=${accessToken}`);
+	};
 }
 export default GoogleFirestoreDocumentService;
