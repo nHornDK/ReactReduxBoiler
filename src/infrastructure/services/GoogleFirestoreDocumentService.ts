@@ -1,11 +1,7 @@
 import Container, { Injectable } from '@fluffy-spoon/inverse';
 import { HttpClient, SimpleHttpClient } from '../utilities';
-// import {GevirNoteDocument} from '../../models/firestore/GevirNoteDocument'
 import { FirestoreDocuments } from '../../models/firestore/FirestoreDocument';
-// import { GoogleAuthenticationService } from '.';
 import OpenIdToken from '../../models/openId/OpenIdToken';
-
-// const firststoreGevirNotesUri = 'https://firestore.googleapis.com/v1/projects/gevirrclone/databases/(default)/documents/GevirNotes/';
 
 const { REACT_APP_FIRESTORE_DOCUMENTS_API_URL: documentsUrl } = process.env;
 

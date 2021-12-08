@@ -32,7 +32,7 @@ class EditTodoModalContainer extends React.Component<ConnectedEditTodoModalConta
 	handleClickSave = async (): Promise<void> => {
 		const { onSaved } = this.props;
 		// const { title, note } = this.state;
-		// await todoNoteEditAsync({
+		// await todoNoteEdit({
 		// 	fields: {
 		// 		title: { stringValue: title },
 		// 		note: { stringValue: note },

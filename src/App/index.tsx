@@ -8,7 +8,7 @@ import TodoPage from '../pages/Todo';
 import store from '../store';
 import './index.scss';
 
-const App: React.FC = () => (
+const App: React.FunctionComponent = () => (
 	<Provider store={store}>
 		<BrowserRouter>
 			<div className='App'>
