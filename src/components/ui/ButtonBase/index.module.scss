@@ -1,0 +1,15 @@
+@import '_globals.scss';
+
+.buttonBase {
+	border-radius: $cornerRadius;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+	font-weight: bold;
+	outline: 0px;
+	border: 0px;
+	font-size: 0.875rem;
+	line-height: 1.75;
+	letter-spacing: 0.02857em;
+	text-transform: uppercase;
+	cursor: pointer;
+}

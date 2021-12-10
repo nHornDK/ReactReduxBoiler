@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '../ButtonBase';
 
 import styles from './index.module.scss';
 
@@ -8,6 +9,7 @@ export interface ButtonProps {
 	variant?: ButtonVariant;
 	children: React.ReactNode;
 	style?: React.CSSProperties;
+	className?: string;
 }
 const getVariantStyles = (variant: ButtonVariant): string => {
 	switch (variant) {
@@ -22,9 +24,9 @@ const getVariantStyles = (variant: ButtonVariant): string => {
 			return styles.buttonDefaultVariant;
 	}
 };
-const Button: React.FC<ButtonProps> = ({ children, variant = 'default', onClick, style }) => (
-	<button type='button' className={`${styles.button} ${getVariantStyles(variant)}`} onClick={onClick} style={style}>
+const Button: React.FC<ButtonProps> = ({ children, className, variant = 'default', onClick, style }) => (
+	<ButtonBase className={`${styles.button} ${getVariantStyles(variant)} ${className || ''}`} onClick={onClick} style={style}>
 		{children}
-	</button>
+	</ButtonBase>
 );
 export default Button;
