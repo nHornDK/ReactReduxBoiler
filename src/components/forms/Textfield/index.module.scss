@@ -10,7 +10,9 @@
 	display: block;
 	width: 300px;
 	border: none;
-	border-bottom: 1px solid $color_default;
+	background-color: lighten($color_app_background, 20%);
+	border-radius: $cornerRadius;
+	outline: none;
 }
 .textfield:focus {
 	outline: none;
@@ -18,7 +20,7 @@
 
 /* LABEL ======================================= */
 .textfieldLabel {
-	color: #999;
+	color: #ccc;
 	font-size: 18px;
 	font-weight: normal;
 	position: absolute;

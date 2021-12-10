@@ -11,10 +11,23 @@ interface ListTodoContainerProps {
 type ConnectedListTodoContainerProps = ListTodoContainerProps & ConnectedProps<typeof connector>;
 
 class ListTodoContainer extends React.PureComponent<ConnectedListTodoContainerProps> {
+	private timeout: NodeJS.Timeout | undefined;
+
 	async componentDidMount(): Promise<void> {
-		const { todoNotes: todoNotesAsync } = this.props;
-		await todoNotesAsync();
+		this.fetchNotes();
 	}
+
+	componentWillUnmount(): void {
+		if (!this.timeout) {
+			clearTimeout(this.timeout);
+		}
+	}
+
+	fetchNotes = async (): Promise<void> => {
+		const { todoNotesList: todoNotes } = this.props;
+		await todoNotes();
+		this.timeout = setTimeout(this.fetchNotes, 1000);
+	};
 
 	render(): JSX.Element {
 		const { allIds, onClickEdit, onClickDelete } = this.props;

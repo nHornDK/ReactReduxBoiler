@@ -25,7 +25,7 @@
 	"extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "github.vscode-pull-request-github", "github.codespaces", "vscode-icons-team.vscode-icons"],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [3000]
+	"forwardPorts": [3000,8080,53093,53993]
 
 	// Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
 	// "portsAttributes": {

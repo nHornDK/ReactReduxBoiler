@@ -1,0 +1,8 @@
+.gradientBox{
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(90deg, #161A42 0%, #0B0D21 100%);
+    background: -webkit-linear-gradient(90deg, #161A42 0%, #0B0D21 100%);
+    background: linear-gradient(90deg, #161A42 0%, #0B0D21 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161A42",endColorstr="#0B0D21",GradientType=1);
+}
+

@@ -36,31 +36,32 @@
 	max-width: min(80vw, 800px);
 	max-height: 80vh;
 	height: max-content;
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	background-color: lighten($color_app_background, 10%);
 	border-radius: $cornerRadius;
-	background-color: #fff;
-	color: #333;
 	flex-grow: 1;
 	flex-shrink: 1;
 }
 .modalHeader {
 	border-top-left-radius: $cornerRadius;
 	border-top-right-radius: $cornerRadius;
-	background-color: #ccc;
-	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	padding: 10px 20px;
 }
 .modalContent {
-	background-color: #fff;
 	flex-grow: 1;
 	flex-shrink: 1;
 	height: max-content;
-	padding: 10px;
+	padding: 10px 20px;
 }
 .modalFooter {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-end;
+	background-color: rgba(0, 0, 0, 0.1);
 	border-bottom-left-radius: $cornerRadius;
 	border-bottom-right-radius: $cornerRadius;
-	background-color: #ccc;
 	padding: 10px;
 }

@@ -20,31 +20,23 @@ export default class TodoDispatchers {
 		this.documentService = container.resolveInstance(GoogleFirestoreDocumentService);
 	}
 
-	private todoFailed = (data: string): TodoFailedAction => ({
-		type: ActionType.TODO_FAILED,
-		payload: {
-			data,
-		},
-	});
+	private todoFailed = (data: string): TodoFailedAction => ({ type: ActionType.TODO_FAILED, payload: { data } });
 
-	public todoNotes =
+	private todoListSuccess = (data: FirestoreDocuments<TodoDocument>): TodoFailedAction => ({ type: ActionType.TODO_FAILED, payload: { data } });
+
+	public todoNotesList =
 		(): AppThunk<Promise<TodoListAction | TodoFailedAction>> =>
 		async (dispatch, getState): Promise<TodoListAction | TodoFailedAction> => {
 			try {
 				const { authenticate } = getState();
 				if (authenticate && authenticate.token) {
 					const response = await this.documentService.listDocuments<TodoDocument>('TodoItems', authenticate.token);
-					return dispatch({
-						type: ActionType.TODO_LIST_SUCCESS,
-						payload: {
-							data: response,
-						},
-					});
+					return dispatch(this.todoListSuccess(response));
 				}
 			} catch (error: unknown) {
 				return dispatch(this.todoFailed(JSON.stringify(error)));
 			}
-			return dispatch(this.todoFailed('yeet'));
+			return dispatch(this.todoFailed('todoNotes failed'));
 		};
 
 	public todoNoteCreate =
